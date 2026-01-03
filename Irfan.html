@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaik Mohammad Irfan - Mapping SME Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        /* Print Specific Styling */
+        @media print {
+            nav, .no-print, button, .expand-hint { display: none !important; }
+            body { background-color: white !important; color: black !important; }
+            section { padding-top: 1rem !important; padding-bottom: 1rem !important; border: none !important; }
+            .chart-container { max-height: 250px !important; }
+            [id^="details-"] { display: block !important; }
+        }
+    </style>
+    <!-- Updated with 98% Accuracy and 80k Parcel stats -->
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-100 selection:text-teal-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 bg-teal-600 rounded flex items-center justify-center text-white font-bold">S</div>
+                    <span class="font-bold text-lg tracking-tight text-slate-900">Shaik Mohammad Irfan</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#overview" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Overview</a>
+                    <a href="#impact" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Impact Analysis</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Experience</a>
+                </div>
+                <button onclick="window.print()" class="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition-colors flex items-center gap-2">
+                    <span>Download PDF</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="overview" class="pt-16 pb-12 md:pt-24 md:pb-16 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm font-medium mb-6 border border-teal-100">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                </span>
+                Open for Mapping Roles
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+                Technical Specialist & SME <br class="hidden md:block" />
+                <span class="text-teal-600">High-Precision Operations</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Specializing in large-scale geospatial data management. Transforming legacy records into 98% accurate digital assets for autonomous and municipal applications.
+            </p>
+            
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+                    <div class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">8+</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Years Exp</div>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+                    <div class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">98%</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Data Accuracy</div>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+                    <div class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">80k+</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Parcels Managed</div>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+                    <div class="text-3xl font-bold text-slate-900 mb-1 group-hover:text-teal-600 transition-colors">20%</div>
+                    <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Efficiency Gain</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Impact Analysis Section -->
+    <section id="impact" class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Operational Impact Analysis</h2>
+                <p class="text-slate-600">
+                    A quantitative look at improvements in throughput and data integrity driven by SOPs and Automation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <!-- Chart 1: Efficiency -->
+                <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold text-slate-900">Workflow Efficiency</h3>
+                        <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-1 rounded">Result: +20%</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+                <!-- Chart 2: Accuracy -->
+                <div class="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold text-slate-900">Data Integrity</h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">Target: Zero Defects</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="accuracyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-16 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">Professional Timeline</h2>
+            <div class="md:w-2/3 mx-auto relative timeline-line">
+                <div class="space-y-8" id="experience-container">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-white font-medium">Shaik Mohammad Irfan | Mapping SME</p>
+            <p class="text-sm text-slate-400 mt-2">Nandyal, AP | +91 8008480076 | irfansmd@yahoo.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const experienceData = [
+            {
+                role: "Senior Geospatial Specialist (Technical Lead)",
+                company: "Department of Survey and Land Records",
+                period: "02/2022 – Present",
+                summary: "Primary point of contact for escalations and QA/QC for 80,000+ parcels.",
+                details: [
+                    "Resolving complex mapping escalations for 80,000+ parcels.",
+                    "Piloted Drone/UAV imagery integration workflows.",
+                    "Increased production efficiency by 20% via SOP optimization.",
+                    "Authored clear technical documentation for vendor training."
+                ],
+                active: true
+            },
+            {
+                role: "GIS Analyst – Technical Operations",
+                company: "Department of Survey and Land Records",
+                period: "01/2021 – 01/2022",
+                summary: "Owned end-to-end migration of legacy maps to GIS.",
+                details: [
+                    "Migrated legacy paper maps into digital GIS frameworks.",
+                    "Resolved spatial discrepancies using buffer/overlay analysis.",
+                    "Managed QA/QC design for Raster-to-Vector pipelines."
+                ],
+                active: false
+            },
+            {
+                role: "Junior GIS Executive",
+                company: "Department of Survey and Land Records",
+                period: "10/2019 – 12/2020",
+                summary: "Facilitated transition from CAD to Core GIS.",
+                details: [
+                    "Transitioned workflows from AutoCAD to ArcGIS/QGIS.",
+                    "Digitized high-precision land boundary maps."
+                ],
+                active: false
+            },
+            {
+                role: "Digitizer",
+                company: "APSAC",
+                period: "06/2017 – 09/2019",
+                summary: "Digitized 2,500+ legacy survey maps.",
+                details: [
+                    "Digitized legacy maps using Collabland.",
+                    "Executed rigorous QA/QC in AutoCAD."
+                ],
+                active: false
+            }
+        ];
+
+        function renderExperience() {
+            const container = document.getElementById('experience-container');
+            container.innerHTML = '';
+            experienceData.forEach((job, index) => {
+                const item = document.createElement('div');
+                item.className = "relative pl-12";
+                
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-xl border border-slate-200 shadow-sm cursor-pointer hover:shadow-md transition-all";
+                card.onclick = () => { experienceData[index].active = !experienceData[index].active; renderExperience(); };
+
+                card.innerHTML = `
+                    <div class="absolute left-[16px] top-6 w-4 h-4 rounded-full border-2 border-white shadow-sm z-10 ${index === 0 ? 'bg-teal-600' : 'bg-slate-300'}"></div>
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">${job.role}</h3>
+                            <p class="text-teal-600 font-medium text-sm">${job.company}</p>
+                        </div>
+                        <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600 font-semibold">${job.period}</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-4">${job.summary}</p>
+                    <div class="${job.active ? 'block' : 'hidden'} border-t border-slate-100 pt-3 mt-3">
+                        <ul class="space-y-2">
+                            ${job.details.map(d => `<li class="text-sm text-slate-700 flex gap-2"><span>•</span> ${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="no-print mt-2 text-xs font-bold text-teal-600">${job.active ? 'Show Less' : 'View Achievements'}</div>
+                `;
+                item.appendChild(card);
+                container.appendChild(item);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderExperience();
+
+            // Efficiency Chart
+            new Chart(document.getElementById('efficiencyChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Standard', 'Optimized'],
+                    datasets: [{
+                        label: 'Throughput',
+                        data: [100, 120],
+                        backgroundColor: ['#cbd5e1', '#0d9488'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { display: false }, x: { grid: { display: false } } }
+                }
+            });
+
+            // Accuracy Chart (Updated to 98%)
+            new Chart(document.getElementById('accuracyChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Accuracy', 'Margin'],
+                    datasets: [{
+                        data: [98, 2],
+                        backgroundColor: ['#0f172a', '#f43f5e'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
